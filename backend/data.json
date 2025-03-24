@@ -4,42 +4,6 @@
         "cores": 4,
         "history": [
             {
-                "timestamp": 1741860336.6480756,
-                "usage": 13.9,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1741860341.4795408,
-                "usage": 15.7,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1741860345.9056363,
-                "usage": 13.7,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1741861455.2823281,
-                "usage": 36.8,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1741861460.1066322,
-                "usage": 13.0,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1741861464.9332345,
-                "usage": 13.6,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
                 "timestamp": 1741861469.765149,
                 "usage": 18.2,
                 "temperature": 0,
@@ -122,6 +86,46 @@
                 "usage": 18.1,
                 "temperature": 0,
                 "frequency": 3401.0
+            },
+            {
+                "timestamp": 1742819798.526959,
+                "usage": 44.5,
+                "temperature": 0,
+                "frequency": 3401.0
+            },
+            {
+                "timestamp": 1742819803.196568,
+                "usage": 22.5,
+                "temperature": 0,
+                "frequency": 3401.0
+            },
+            {
+                "timestamp": 1742819867.147398,
+                "usage": 44.7,
+                "temperature": 0,
+                "frequency": 3401.0
+            },
+            {
+                "timestamp": 1742819872.0112286,
+                "usage": 28.6,
+                "temperature": 0,
+                "frequency": 3401.0
+            },
+            {
+                "name": "Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz",
+                "cores": 4,
+                "usage": 22.9,
+                "temperature": 0,
+                "frequency": 3401.0,
+                "timestamp": 1742822613.764678
+            },
+            {
+                "name": "Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz",
+                "cores": 4,
+                "usage": 32.8,
+                "temperature": 0,
+                "frequency": 3401.0,
+                "timestamp": 1742822617.3491938
             }
         ]
     },

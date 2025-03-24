@@ -1,0 +1,24 @@
+{
+    "cpu": {
+        "name": "Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz",
+        "cores": 4,
+        "history": [
+            {
+                "name": "Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz",
+                "cores": 4,
+                "usage": 25.0,
+                "temperature": 0,
+                "frequency": 3401.0,
+                "timestamp": 1742823089.380808
+            },
+            {
+                "name": "Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz",
+                "cores": 4,
+                "usage": 32.4,
+                "temperature": 0,
+                "frequency": 3401.0,
+                "timestamp": 1742823093.0132518
+            }
+        ]
+    }
+}

@@ -1,11 +1,12 @@
 # Colors
-COLOR_BACKGROUND = "#2E3440"  
-COLOR_FOREGROUND = "#D8DEE9"  
-COLOR_ACCENT = "#5E81AC"      
-COLOR_BUTTON_BG = "#434C5E"    
-COLOR_BUTTON_FG = "#ECEFF4"    
-COLOR_LABEL_BG = "#3B4252"     
-COLOR_ENTRY_BG = "#4C566A"     
+COLOR_BACKGROUND = "#F7F7F7"  # خلفية فاتحة
+COLOR_FOREGROUND = "#2E2E2E"  # نص داكن
+COLOR_ACCENT = "#4A90E2"       # لون بارز أزرق هادئ
+COLOR_BUTTON_BG = "#EAEAEA"    # لون أزرار فاتح
+COLOR_BUTTON_FG = "#333333"    # نص الأزرار داكن قليلاً
+COLOR_LABEL_BG = "#FFFFFF"     # خلفية التسمية بيضاء تمامًا
+COLOR_ENTRY_BG = "#F0F0F0"     # خلفية حقول الإدخال رمادية خفيفة
+
 
 # Fonts
 FONT_TITLE = ("Broadway", 12, "bold")  # title font

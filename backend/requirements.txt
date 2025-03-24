@@ -1,2 +1,2 @@
 psutil
-cpuinfo
+py-cpuinfo

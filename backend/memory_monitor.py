@@ -1,61 +1,51 @@
-from psutil import virtual_memory
+import psutil
 import json
 import time
 
-
-mem_size = float(virtual_memory().total / (1024 ** 3))
-mem_used = float(virtual_memory().used / (1024 ** 3))
-mem_percent = virtual_memory().percent 
-mem_free = float(virtual_memory().available / (1024 ** 3))
-timestamp = time.time()
-
-#Storing data in a dictionary
-data = {
-    "memory": {
-        "history": [{
-            "timestamp": timestamp,
-            "size": mem_size,
-            "used": mem_used,
-            "percent": mem_percent,
-            "free": mem_free
-        }]
-    }
-}
-
-
-#Restoring data every 3 seconds
-while True:
-    try:
-        with open("data.json","r") as file:
-            data = json.load(file)
-    except FileNotFoundError:
-        data = {"memory": {"history": {}}}
-
-    #Collecting new data
-    mem_size_now = round(virtual_memory().total / (1024 ** 3),2)
-    mem_usage_now = round(virtual_memory().used / (1024 ** 3),2)
-    mem_percent_now = virtual_memory().percent
-    mem_free_now = round(virtual_memory().available / (1024 ** 3),2)
-    timestamp_now = time.time()
+# Function to collect memory data
+def get_memory_data():
+    memory_info = psutil.virtual_memory()
+    timestamp = time.time()
     
-    #Appending the new data
-    data["memory"]["history"].append({
-        "timestamp": timestamp_now,
-        "size": mem_size_now,
-        "used": mem_usage_now,
-        "percent": mem_percent_now,
-        "free": mem_free_now
-    })
+    return {
+        "size": round(memory_info.total / (1024 ** 3), 2),
+        "used": round(memory_info.used / (1024 ** 3), 2),
+        "percent": memory_info.percent,
+        "free": round(memory_info.available / (1024 ** 3), 2),
+        "timestamp": timestamp
+    }
 
-    #If the history length passes 20, deleting the first history(queue FIFO)
+# Load or initialize data file
+def load_data(filename="data.json"):
+    try:
+        with open(filename, "r") as file:
+            return json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"memory": {"history": []}}
+
+# Save data to JSON file
+def save_data(data, filename="data.json"):
+    with open(filename, "w") as file:
+        json.dump(data, file, indent=4)
+
+# Main monitoring loop
+
+data = load_data()
+
+# Initial memory data collection
+memory_data = get_memory_data()
+data["memory"]["history"].append(memory_data)
+if len(data["memory"]["history"]) > 20:
+    data["memory"]["history"].pop(0)
+
+save_data(data)
+
+# Restoring data every 3 seconds
+while True:
+    memory_data = get_memory_data()
+    data["memory"]["history"].append(memory_data)
     if len(data["memory"]["history"]) > 20:
         data["memory"]["history"].pop(0)
-    
-    #Saving the data into .json file
-    with open("data.json","w") as file:
-        json.dump(data,file,indent=4)
-    file.close()
 
-
-    #Sleeping for 3 seconds before restarting the loop
+    save_data(data)
     time.sleep(3)
