@@ -1,242 +1,63 @@
 {
     "cpu": {
-        "name": "Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz",
-        "cores": 4,
+        "name": "",
+        "cores": 0,
         "history": [
             {
-                "timestamp": 1741860336.6480756,
-                "usage": 13.9,
-                "temperature": 0,
+                "timestamp": 1743028807.4156,
+                "usage": 35.4,
                 "frequency": 3401.0
             },
             {
-                "timestamp": 1741860341.4795408,
-                "usage": 15.7,
-                "temperature": 0,
+                "timestamp": 1743028810.4170327,
+                "usage": 10.5,
                 "frequency": 3401.0
             },
             {
-                "timestamp": 1741860345.9056363,
-                "usage": 13.7,
-                "temperature": 0,
+                "timestamp": 1743028813.4186132,
+                "usage": 7.6,
                 "frequency": 3401.0
             },
             {
-                "timestamp": 1741861455.2823281,
-                "usage": 36.8,
-                "temperature": 0,
+                "timestamp": 1743028816.4210458,
+                "usage": 8.2,
                 "frequency": 3401.0
             },
             {
-                "timestamp": 1741861460.1066322,
-                "usage": 13.0,
-                "temperature": 0,
+                "timestamp": 1743028819.4231994,
+                "usage": 9.2,
                 "frequency": 3401.0
             },
             {
-                "timestamp": 1741861464.9332345,
-                "usage": 13.6,
-                "temperature": 0,
+                "timestamp": 1743028822.4255621,
+                "usage": 9.3,
                 "frequency": 3401.0
             },
             {
-                "timestamp": 1741861469.765149,
-                "usage": 18.2,
-                "temperature": 0,
+                "timestamp": 1743028825.4270916,
+                "usage": 18.8,
                 "frequency": 3401.0
             },
             {
-                "timestamp": 1741861474.5941422,
-                "usage": 13.1,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1741861479.4219942,
-                "usage": 13.3,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1741861484.2569504,
-                "usage": 13.5,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1742301373.6350923,
-                "usage": 32.3,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1742301378.452992,
-                "usage": 13.4,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1742301405.5061755,
-                "usage": 34.9,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1742301410.3330307,
-                "usage": 15.4,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1742301415.1571612,
-                "usage": 15.4,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1742301419.9745076,
-                "usage": 16.5,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1742301424.7938514,
-                "usage": 13.6,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1742301429.6382372,
-                "usage": 18.3,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1742301434.4582262,
-                "usage": 16.7,
-                "temperature": 0,
-                "frequency": 3401.0
-            },
-            {
-                "timestamp": 1742301439.3235066,
-                "usage": 18.1,
-                "temperature": 0,
+                "timestamp": 1743028828.4296582,
+                "usage": 8.3,
                 "frequency": 3401.0
             }
         ]
     },
     "memory": {
-        "history": [
-            {
-                "timestamp": 1741873212.3903165,
-                "size": 15.961814880371094,
-                "used": 6.834449768066406,
-                "percent": 42.8,
-                "free": 9.127689361572266
-            },
-            {
-                "timestamp": 1741873215.4038262,
-                "size": 15.961814880371094,
-                "used": 6.831821441650391,
-                "percent": 42.8,
-                "free": 9.129936218261719
-            },
-            {
-                "timestamp": 1741873218.417735,
-                "size": 15.961814880371094,
-                "used": 6.824291229248047,
-                "percent": 42.8,
-                "free": 9.137920379638672
-            },
-            {
-                "timestamp": 1741873221.4315054,
-                "size": 15.961814880371094,
-                "used": 6.834835052490234,
-                "percent": 42.8,
-                "free": 9.127731323242188
-            },
-            {
-                "timestamp": 1741873224.4447062,
-                "size": 15.961814880371094,
-                "used": 6.827728271484375,
-                "percent": 42.8,
-                "free": 9.132919311523438
-            },
-            {
-                "timestamp": 1741873227.461086,
-                "size": 15.961814880371094,
-                "used": 6.853046417236328,
-                "percent": 43.0,
-                "free": 9.09295654296875
-            },
-            {
-                "timestamp": 1741873230.4752018,
-                "size": 15.961814880371094,
-                "used": 6.858650207519531,
-                "percent": 43.0,
-                "free": 9.103939056396484
-            },
-            {
-                "timestamp": 1741873233.4899058,
-                "size": 15.961814880371094,
-                "used": 6.940315246582031,
-                "percent": 43.5,
-                "free": 9.022293090820312
-            },
-            {
-                "timestamp": 1741873236.5038223,
-                "size": 15.961814880371094,
-                "used": 6.895359039306641,
-                "percent": 43.2,
-                "free": 9.06582260131836
-            },
-            {
-                "timestamp": 1741873239.517603,
-                "size": 15.961814880371094,
-                "used": 6.903003692626953,
-                "percent": 43.2,
-                "free": 9.059555053710938
-            },
-            {
-                "timestamp": 1741873242.5328414,
-                "size": 15.961814880371094,
-                "used": 6.902233123779297,
-                "percent": 43.2,
-                "free": 9.060375213623047
-            },
-            {
-                "timestamp": 1741873245.5473425,
-                "size": 15.961814880371094,
-                "used": 6.902484893798828,
-                "percent": 43.2,
-                "free": 9.060100555419922
-            },
-            {
-                "timestamp": 1741873248.5612488,
-                "size": 15.961814880371094,
-                "used": 6.892387390136719,
-                "percent": 43.2,
-                "free": 9.070144653320312
-            },
-            {
-                "timestamp": 1741873251.5753665,
-                "size": 15.961814880371094,
-                "used": 6.900409698486328,
-                "percent": 43.2,
-                "free": 9.062191009521484
-            }
-        ]
+        "history": []
     },
     "disk": {
         "read_speed": 0,
         "write_speed": 0,
-        "percentage": 96.4,
-        "total_size": 475,
-        "used_size": 458,
-        "free_size": 17
+        "percentage": 0,
+        "total_size": 0,
+        "used_size": 0,
+        "free_size": 0
     },
     "network": {
-        "download": 5.2,
-        "upload": 5.74
+        "download": "",
+        "upload": ""
     }
 }

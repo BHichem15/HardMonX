@@ -1,61 +1,42 @@
 from psutil import virtual_memory
 import json
 import time
+import os
 
+# Define the path of the JSON file in the same directory
+json_file = os.path.join(os.path.dirname(__file__), "data.json")
 
-mem_size = float(virtual_memory().total / (1024 ** 3))
-mem_used = float(virtual_memory().used / (1024 ** 3))
-mem_percent = virtual_memory().percent 
-mem_free = float(virtual_memory().available / (1024 ** 3))
-timestamp = time.time()
-
-#Storing data in a dictionary
-data = {
-    "memory": {
-        "history": [{
-            "timestamp": timestamp,
-            "size": mem_size,
-            "used": mem_used,
-            "percent": mem_percent,
-            "free": mem_free
-        }]
+def get_memory_info():
+    """Collects current memory usage data."""
+    return {
+        "timestamp": time.time(),
+        "size": round(virtual_memory().total / (1024 ** 3), 2),
+        "used": round(virtual_memory().used / (1024 ** 3), 2),
+        "percent": virtual_memory().percent,
+        "free": round(virtual_memory().available / (1024 ** 3), 2)
     }
-}
 
+# Initial memory data collection
+data = {"memory": {"history": [get_memory_info()]}}
 
-#Restoring data every 3 seconds
+# Automatic data update every 3 seconds
 while True:
     try:
-        with open("data.json","r") as file:
+        with open(json_file, "r") as file:
             data = json.load(file)
-    except FileNotFoundError:
-        data = {"memory": {"history": {}}}
+    except (FileNotFoundError, json.JSONDecodeError):
+        data = {"memory": {"history": []}}
 
-    #Collecting new data
-    mem_size_now = round(virtual_memory().total / (1024 ** 3),2)
-    mem_usage_now = round(virtual_memory().used / (1024 ** 3),2)
-    mem_percent_now = virtual_memory().percent
-    mem_free_now = round(virtual_memory().available / (1024 ** 3),2)
-    timestamp_now = time.time()
-    
-    #Appending the new data
-    data["memory"]["history"].append({
-        "timestamp": timestamp_now,
-        "size": mem_size_now,
-        "used": mem_usage_now,
-        "percent": mem_percent_now,
-        "free": mem_free_now
-    })
+    # Collect new data
+    data["memory"]["history"].append(get_memory_info())
 
-    #If the history length passes 20, deleting the first history(queue FIFO)
+    # If history length exceeds 20, remove the oldest entry (FIFO queue)
     if len(data["memory"]["history"]) > 20:
         data["memory"]["history"].pop(0)
     
-    #Saving the data into .json file
-    with open("data.json","w") as file:
-        json.dump(data,file,indent=4)
-    file.close()
-
-
-    #Sleeping for 3 seconds before restarting the loop
+    # Save the data to a JSON file
+    with open(json_file, "w") as file:
+        json.dump(data, file, indent=4)
+    
+    # Sleep for 3 seconds before the next update
     time.sleep(3)

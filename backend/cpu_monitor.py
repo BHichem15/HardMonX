@@ -1,74 +1,56 @@
 from psutil import cpu_percent, cpu_freq
 from cpuinfo import get_cpu_info
-import time,json
+import time, json, os
 
+# Define the path of the JSON file in the same directory
+json_file = os.path.join(os.path.dirname(__file__), "data.json")
 
-#Collecting CPU data.
+# Collect initial CPU data
 cpu_usage = cpu_percent()
 cpu_clock = cpu_freq()
-cpu_name = get_cpu_info()['brand_raw']
-cpu_cores = get_cpu_info()['count']
-
-try:
-    cpu_temp = get_cpu_info()['temp']
-except:
-    cpu_temp = 0
-    pass
+cpu_name = get_cpu_info().get('brand_raw', 'Unknown')
+cpu_cores = get_cpu_info().get('count', 0)
 
 timestamp = time.time()
 
-#Storing data in a dictionary
-data = {
+# Create a dictionary to store data
+cpu_data = {
     "cpu": {
         "name": cpu_name,
         "cores": cpu_cores,
         "history": [
-            {"timestamp": timestamp, "usage": cpu_usage, "temperature": cpu_temp, "frequency": cpu_clock.current},
+            {"timestamp": timestamp, "usage": cpu_usage, "frequency": cpu_clock.current},
         ]
-    }  
+    }
 }
 
-#Restoring data every 3 seconds
+# Auto-update loop every 3 seconds
 while True:
     try:
-        with open("data.json", "r") as file:
-            data = json.load(file)
-    except(FileNotFoundError, json.JSONDecodeError):
-        data = {"cpu": {
-            "name": cpu_name,
-            "cores": cpu_cores,
-            "history": []}}
+        with open(json_file, "r") as file:
+            cpu_data = json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        cpu_data = {"cpu": {"name": cpu_name, "cores": cpu_cores, "history": []}}
 
-    # Collecting new data
+    # Collect new data
     cpu_usage_now = cpu_percent()
     cpu_clock_now = cpu_freq()
-    try:
-        cpu_temp_now = cpu_temp = get_cpu_info()['temp'].current
-    except:
-        cpu_temp_now = 0
-        pass
     timestamp = time.time()
 
-    # Appending the new data
-    data["cpu"]["history"].append({
+    # Append new data to the history
+    cpu_data["cpu"]["history"].append({
         "timestamp": timestamp,
         "usage": cpu_usage_now,
-        "temperature": cpu_temp_now,
         "frequency": cpu_clock_now.current
-        })
+    })
 
-    # If the history length passes 20, deleting the first history(queue FIFO)
-    if len(data["cpu"]["history"]) > 20:
-        data["cpu"]["history"].pop(0)
+    # Limit the stored values to 20
+    if len(cpu_data["cpu"]["history"]) > 20:
+        cpu_data["cpu"]["history"].pop(0)
 
-    # Saving the data into .json file
-    with open("data.json", "w") as file:
-        json.dump(data, file, indent=4)
-    file.close()
-
-
-    # Sleeping for 3 seconds before restarting the loop
+    # Save data to the JSON file
+    with open(json_file, "w") as file:
+        json.dump(cpu_data, file, indent=4)
+    
+    # Wait 3 seconds before the next update
     time.sleep(3)
-
-
-

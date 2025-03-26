@@ -1,2 +1,3 @@
 psutil
 cpuinfo
+speedtest-cli 

@@ -1,17 +1,17 @@
 # Colors
-COLOR_BACKGROUND = "#2E3440"  
-COLOR_FOREGROUND = "#D8DEE9"  
-COLOR_ACCENT = "#5E81AC"      
-COLOR_BUTTON_BG = "#434C5E"    
-COLOR_BUTTON_FG = "#ECEFF4"    
-COLOR_LABEL_BG = "#3B4252"     
-COLOR_ENTRY_BG = "#4C566A"     
+COLOR_BACKGROUND = "#F7F7F7"  
+COLOR_FOREGROUND = "#2E2E2E"  
+COLOR_ACCENT = "#4A90E2"       
+COLOR_BUTTON_BG = "#EAEAEA"  
+COLOR_BUTTON_FG = "#333333"   
+COLOR_LABEL_BG = "#FFFFFF"  
+COLOR_ENTRY_BG = "#F0F0F0"    
 
 # Fonts
-FONT_TITLE = ("Broadway", 12, "bold")  # title font
-FONT_DATA = ("Britannic", 8)           # Data font
-FONT_LABEL = ("Britannic", 8, "bold")  # Label font
-FONT_BUTTON = ("Century", 8, "bold") # button font
+FONT_TITLE = ("Broadway", 12, "bold")  
+FONT_DATA = ("Britannic", 8)          
+FONT_LABEL = ("Britannic", 8, "bold") 
+FONT_BUTTON = ("Century", 8, "bold") 
 
 # Styles
 title_style = {

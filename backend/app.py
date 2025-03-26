@@ -6,7 +6,9 @@ import network_monitor
 
 # Main function
 def main():
-    # Starting CPU Monitoring
+
+            
+     # Starting CPU Monitoring
     cpu_thread = threading.Thread(target=cpu_monitor, daemon=True)
     cpu_thread.start()
 
@@ -21,10 +23,11 @@ def main():
     # Starting Network Monitoring
     network_thread = threading.Thread(target=network_monitor, daemon=True)
     network_thread.start()
-    
+        
     # Running the backend forever
     try:
         while True:
+            main()
             pass  
     except KeyboardInterrupt:
         print("The Software has stopped.")
