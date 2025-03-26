@@ -6,10 +6,10 @@ import ui_styles as style
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from backend.cpu_monitor import get_cpu_data
-from backend.memory_monitor import get_memory_data
-from backend.disk_monitor import get_disk_data
-from backend.network_monitor import get_network_data
+import backend.cpu_monitor
+import backend.memory_monitor
+import backend.disk_monitor
+import backend.network_monitor
 
 
 class SystemMonitorApp:
