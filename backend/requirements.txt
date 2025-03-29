@@ -3,4 +3,3 @@ cpuinfo
 speedtest-cli
 fastapi
 uvicorn
-requests
