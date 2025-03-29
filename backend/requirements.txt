@@ -1,3 +1,6 @@
 psutil
 cpuinfo
-speedtest-cli 
+speedtest-cli
+fastapi
+uvicorn
+requests

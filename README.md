@@ -1,5 +1,8 @@
-<h1>📌HardMonX 1.0.0 Documentation</h1>
+<h1>📌HardMonX 0.1.0 Documentation</h1>
 <p>This documentation provides an in-depth guide on how to install, run, and use this program, as well as a breakdown of the file structure, features, and future improvements. This is a program was created as a final project for <strong>CS50x: introduction to computer science</strong> by <strong>David J. Malan</strong>. This program was made by <strong>Bourenane Chàabane</strong>.</p>
+
+<h2>Presentation Video<h2>
+<https://youtu.be/9TUZCqUVokM>
 
 <h2>📖 1. Project Overview</h2>
 <p>This project is a real-time computer performance monitoring tool that collects data about CPU usage and temperature, memory consumption, disk usage and Network speed using Python.</p>

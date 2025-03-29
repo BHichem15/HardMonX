@@ -1,42 +1,42 @@
-from psutil import virtual_memory
 import json
 import time
-import os
+import threading
+from psutil import virtual_memory
 
-# Define the path of the JSON file in the same directory
-json_file = os.path.join(os.path.dirname(__file__), "data.json")
+data_file = "data.json"
 
-def get_memory_info():
-    """Collects current memory usage data."""
+def monitor():
+    """Fetch memory usage statistics"""
+    mem_info = virtual_memory()
     return {
-        "timestamp": time.time(),
-        "size": round(virtual_memory().total / (1024 ** 3), 2),
-        "used": round(virtual_memory().used / (1024 ** 3), 2),
-        "percent": virtual_memory().percent,
-        "free": round(virtual_memory().available / (1024 ** 3), 2)
+        "usage": mem_info.percent,
+        "size": round(mem_info.total / (1024 ** 3), 3),
+        "used": round(mem_info.used / (1024 ** 3), 3),
+        "free": round(mem_info.free / (1024 ** 3), 3)
     }
 
-# Initial memory data collection
-data = {"memory": {"history": [get_memory_info()]}}
+def save_memory_data():
+    """Fetch and save memory data periodically"""
+    while True:
+        mem_data = monitor()
+        mem_data["timestamp"] = time.time()
+        
+        try:
+            with open(data_file, "r") as file:
+                data = json.load(file)
+        except (FileNotFoundError, json.JSONDecodeError):
+            data = {}
 
-# Automatic data update every 3 seconds
-while True:
-    try:
-        with open(json_file, "r") as file:
-            data = json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        data = {"memory": {"history": []}}
+        if "memory" not in data:
+            data["memory"] = {"history": []}
 
-    # Collect new data
-    data["memory"]["history"].append(get_memory_info())
+        data["memory"]["history"].append(mem_data)
+        if len(data["memory"]["history"]) > 20:
+            data["memory"]["history"].pop(0)
 
-    # If history length exceeds 20, remove the oldest entry (FIFO queue)
-    if len(data["memory"]["history"]) > 20:
-        data["memory"]["history"].pop(0)
-    
-    # Save the data to a JSON file
-    with open(json_file, "w") as file:
-        json.dump(data, file, indent=4)
-    
-    # Sleep for 3 seconds before the next update
-    time.sleep(3)
+        with open(data_file, "w") as file:
+            json.dump(data, file, indent=4)
+
+        time.sleep(3)
+
+threading.Thread(target=save_memory_data, daemon=True).start()
