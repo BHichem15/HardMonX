@@ -1,5 +1,4 @@
 import subprocess
-<<<<<<< HEAD
 
 # تشغيل الـ Backend
 backend_process = subprocess.Popen(["python", "backend/app.py"])
