@@ -1,79 +1,104 @@
-<h1>📌HardMonX 1.0.0 Documentation</h1>
-<p>This documentation provides an in-depth guide on how to install, run, and use this program, as well as a breakdown of the file structure, features, and future improvements. This is a program was created as a final project for <strong>CS50x: introduction to computer science</strong> by <strong>David J. Malan</strong>. This program was made by <strong>Bourenane Chàabane</strong>.</p>
+<h1>📌 HardMonX 1.0.0 Documentation</h1>
+<p>This documentation provides a comprehensive guide on how to install, run, and use HardMonX. It also includes a breakdown of the file structure, features, and future improvements. HardMonX is a real-time system monitoring tool created as a final project for <strong>CS50x: Introduction to Computer Science</strong> by <strong>David J. Malan</strong>. This project was developed by <strong>Bourenane Chàabane</strong>.</p>
+
+<h2>🎥 Presentation Video</h2>
+<p>Watch the full project demonstration here:</p>
+<p><a href="https://youtu.be/9TUZCqUVokM">CS50x final project presentation - HardMonX</a></p>
 
 <h2>📖 1. Project Overview</h2>
-<p>This project is a real-time computer performance monitoring tool that collects data about CPU usage and temperature, memory consumption, disk usage and Network speed using Python.</p>
-<p>🔹 The backend is built using Some python libraries and a .json file as a mini-database for storing history of performance.</p>
-<p>🔹 The frontend is a Graphical user interface using Tkinter.</p>
+<p>HardMonX is a real-time system performance monitoring tool that provides users with detailed insights into their computer's health and resource usage. It collects and displays:</p>
+<ul>
+    <li>🔹 <strong>CPU Usage & Temperature</strong> - Tracks processor performance in real-time.</li>
+    <li>🔹 <strong>Memory Usage</strong> - Displays RAM consumption and available memory.</li>
+    <li>🔹 <strong>Disk Usage</strong> - Monitors free and used disk space.</li>
+    <li>🔹 <strong>Network Speed</strong> - Tests and tracks internet speed.</li>
+</ul>
+<p>The backend is built using Python, leveraging various system-monitoring libraries. A JSON file acts as a mini-database to store performance history.</p>
+<p>The frontend is designed using <strong>Tkinter</strong> to provide a simple and interactive graphical user interface.</p>
 
 <h2>⚙️ 2. Requirements</h2>
-<p>Before running the project, ensure you have the following installed:</p>
-<p>✅ Python 3.x</p>
-<p>✅ Required Python libraries:</p>
-<p>    - psutil</p>
-<p>    - cpuinfo</p>
+<p>Before running the program, ensure you have the following:</p>
+<ul>
+    <li>✅ Python 3.x installed</li>
+    <li>✅ Required Python libraries:</li>
+    <ul>
+        <li>- psutil (for system monitoring)</li>
+        <li>- cpuinfo (for CPU details)</li>
+        <li>- speedtest-cli (for internet speed testing)</li>
+        <li>- fastAPI & uvicorn (for backend server)</li>
+    </ul>
+</ul>
 
 <h2>📂 3. Project Structure</h2>
 <pre>HardMonX 1.0.0/
 │
 ├── backend/
 │   ├── __init__.py
-│   ├── app.py              
-│   ├── cpu_monitor.py        
-│   ├── memory_monitor.py      
-│   ├── disk_monitor.py        
-│   ├── network_monitor.py    
-│   ├── data.json         
-│   └── requirements.txt       
+│   ├── app.py                # Backend server
+│   ├── cpu_monitor.py        # CPU Monitoring Module
+│   ├── memory_monitor.py     # Memory Monitoring Module
+│   ├── disk_monitor.py       # Disk Monitoring Module
+│   ├── network_monitor.py    # Network Monitoring Module
+│   └── requirements.txt      # Required dependencies
 │
 ├── frontend/
 │   ├── __init__.py
-│   ├── ui.py                   
-│   └── ui_styles.py            
+│   ├── ui.py                 # GUI implementation
+│   └── ui_styles.py          # UI styling and theming
 │
-├── main.py                                  
+├── main.py                   # Entry point to start the application
 │
-├── .gitignore                  
+├── data.json                 # Performance history storage
 │
-└── README.md </pre>                  
+├── .gitignore                # Files to exclude from Git
+│
+└── README.md                 # Project documentation</pre>
 
 <h2>🚀 4. Running the Program</h2>
-<h3>I. Install latest version of python</h3>
-<h3>II. install the required libraries using <strong>requirements.txt</strong></h3>
-<p>-In the terminal write : </p>
+<h3>Step 1: Install Python (if not installed)</h3>
+<h3>Step 2: Install the required libraries</h3>
+<p>Open the terminal and run the following commands:</p>
 <code><pre>cd HardMonX
 cd backend</pre></code>
-<p>-In the terminal write : </p>
-<code><pre>pip install requirements.txt</pre></code>
-<h3>III. run the program :</h3>
-<p>- go to the main folder by writing :</p>
+<p>Then, install dependencies:</p>
+<code><pre>pip install -r requirements.txt</pre></code>
+
+<h3>Step 3: Run the Program</h3>
+<p>Navigate back to the main folder:</p>
 <code><pre>cd ..</pre></code>
-<p>In the terminal write :</p>
+<p>Run the program:</p>
 <code><pre>python main.py</pre></code>
 
-<h2>🌟 6. Features</h2>
-<p>✅ Real-time system performance tracking</p>
-<p>✅ Windows and MacOS support</p>
-<p>✅ Beginner Friendly and easy reding</p>
+<h2>🌟 5. Features</h2>
+<ul>
+    <li>✅ Real-time system performance monitoring</li>
+    <li>✅ Displays CPU, Memory, Disk, and Network status</li>
+    <li>✅ Automatic data updates every 3 seconds</li>
+    <li>✅ Simple and user-friendly graphical interface</li>
+    <li>✅ Works on Windows, Linux, and MacOS</li>
+    <li>✅ Lightweight and resource-efficient</li>
+</ul>
 
-<h2>🛠 7. Future Enhancements</h2>
-<p>To make this project more advanced, We will add :</p>
-<p>🔹 Better GUI (Graphical user interface)</p>
-<p>🔹 analyzing the performance and giving advice</p>
-<p>🔹 Email or Notifications alerts when CPU or RAM usage is too high</p>
-<p>🔹 Adding an API</p>
-<p>🔹 A database to store historical performance data and specs of CPUs and GPUs</p>
-<p>🔹 Adding GPU performance and temperature</p>
-<p>🔹 User authentication for monitoring multiple devices</p>
+<h2>🛠 6. Future Enhancements</h2>
+<p>Future improvements planned for HardMonX:</p>
+<ul>
+    <li>🔹 Enhanced GUI with better design</li>
+    <li>🔹 Performance analysis and recommendations</li>
+    <li>🔹 Email or notifications for high CPU/RAM usage</li>
+    <li>🔹 Integration of an API for remote monitoring</li>
+    <li>🔹 Database support for historical performance tracking</li>
+    <li>🔹 GPU performance and temperature monitoring</li>
+    <li>🔹 User authentication to monitor multiple devices</li>
+</ul>
 
-<h2>🖥 9. Converting the Project to an Executable (EXE)</h2>
-<p>If you want to run this project as a standalone Windows application without installing Python, you can convert it to an EXE file:</p>
-<p>1. Install PyInstaller: </p>
-<code><pre>    - pip install pyinstaller</pre></code>
-<p>2. Convert Python script to EXE: </p>
-<code><pre>    - pyinstaller --onefile --windowed app.py</pre></code>
+<h2>🖥 7. Converting to an Executable (EXE)</h2>
+<p>If you want to use HardMonX as a standalone Windows application without needing Python, you can create an EXE file:</p>
+<p>1. Install PyInstaller:</p>
+<code><pre>pip install pyinstaller</pre></code>
+<p>2. Convert Python script to EXE:</p>
+<code><pre>pyinstaller --onefile --windowed main.py</pre></code>
 <p>3. The EXE file will be available in the <strong>dist/</strong> folder.</p>
 
-<h2>📞 10. Support & Contributions</h2>
-<p>If you want to improve this project or report an issue, you can open an Issue or a Pull Request on GitHub.</p>
-
+<h2>📞 8. Support & Contributions</h2>
+<p>If you want to contribute to this project, suggest features, or report issues, feel free to open an Issue or Pull Request on GitHub.</p>
+<p>Thank you for using HardMonX! 🚀</p>

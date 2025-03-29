@@ -1,35 +1,41 @@
-import threading
+from fastapi import FastAPI
 import cpu_monitor
 import memory_monitor
 import disk_monitor
 import network_monitor
+import threading
 
-# Main function
-def main():
-    # Starting CPU Monitoring
-    cpu_thread = threading.Thread(target=cpu_monitor, daemon=True)
-    cpu_thread.start()
+app = FastAPI()
 
-    # Starting Memory Monitoring
-    memory_thread = threading.Thread(target=memory_monitor, daemon=True)
-    memory_thread.start()
+def run_speed_test():
+    download_speed, upload_speed = network_monitor.monitor()
+    network_monitor.save_network_data(download_speed, upload_speed)
+    print(f"Speed Test Completed: Download {download_speed:.2f} Mbps, Upload {upload_speed:.2f} Mbps")
 
-    # Starting Disk Monitoring
-    disk_thread = threading.Thread(target=disk_monitor, daemon=True)
-    disk_thread.start()
-
-    # Starting Network Monitoring
-    network_thread = threading.Thread(target=network_monitor, daemon=True)
-    network_thread.start()
-    
-    # Running the backend forever
+@app.get("/data")
+def get_system_data():
+    """Fetch system data from all monitors and return as JSON"""
     try:
-        while True:
-            pass  
-    except KeyboardInterrupt:
-        print("The Software has stopped.")
+        cpu_data = cpu_monitor.monitor() if cpu_monitor else ["N/A"] * 4
+        memory_data = memory_monitor.monitor() if memory_monitor else ["N/A"] * 4
+        disk_data = disk_monitor.monitor() if disk_monitor else ["N/A"] * 4
+        network_data = network_monitor.get_latest_data() if network_monitor else ["N/A"] * 2
 
-# Starting the Function
+        return {
+            "cpu": cpu_data,
+            "memory": memory_data,
+            "disk": disk_data,
+            "network": network_data
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.post("/speedtest")
+def start_speed_test():
+    """Start network speed test in a separate thread."""
+    threading.Thread(target=run_speed_test, daemon=True).start()
+    return {"message": "Speed test started"}
+
 if __name__ == "__main__":
-    main()
-
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=5000)

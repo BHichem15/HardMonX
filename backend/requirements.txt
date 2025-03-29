@@ -1,2 +1,9 @@
 psutil
+<<<<<<< HEAD
 py-cpuinfo
+=======
+cpuinfo
+speedtest-cli
+fastapi
+uvicorn
+>>>>>>> str
