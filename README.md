@@ -1,4 +1,4 @@
-<h1>📌 HardMonX 1.0.0 Documentation</h1>
+<h1>📌 HardMonX 0.1.0 Documentation</h1>
 <p>This documentation provides a comprehensive guide on how to install, run, and use HardMonX. It also includes a breakdown of the file structure, features, and future improvements. HardMonX is a real-time system monitoring tool created as a final project for <strong>CS50x: Introduction to Computer Science</strong> by <strong>David J. Malan</strong>. This project was developed by <strong>Bourenane Chàabane</strong>.</p>
 
 <h2>🎥 Presentation Video</h2>
@@ -30,7 +30,7 @@
 </ul>
 
 <h2>📂 3. Project Structure</h2>
-<pre>HardMonX 1.0.0/
+<pre>HardMonX 0.1.0/
 │
 ├── backend/
 │   ├── __init__.py
@@ -62,7 +62,6 @@
 cd backend</pre></code>
 <p>Then, install dependencies:</p>
 <code><pre>pip install -r requirements.txt</pre></code>
-
 <h3>Step 3: Run the Program</h3>
 <p>Navigate back to the main folder:</p>
 <code><pre>cd ..</pre></code>
